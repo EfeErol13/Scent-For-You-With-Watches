@@ -11,6 +11,7 @@
             padding: 0;
             font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
+        /* PURE WHITE BACKGROUND */
         body {
             background-color: #FFFFFF;
             color: #111111;
@@ -51,7 +52,7 @@
             margin-bottom: 12px;
             margin-top: 30px;
         }
-        /* Minimalist Button Framework */
+        /* MINIMALIST BUTTON GRID */
         .btn-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -83,7 +84,7 @@
             border-color: #111111;
             color: #FFFFFF;
         }
-        /* Display Architecture */
+        /* HIGH CONTRAST CARDS WITH LIGHT WHITE/GRAY BG */
         .result-wrapper {
             margin-top: 35px;
             opacity: 0;
@@ -203,7 +204,7 @@
         
         <div class="result-container">
             <div class="card watch-card">
-                <div class="card-type">专 Recommended Watch</div>
+                <div class="card-type">⌚ Recommended Watch</div>
                 <div class="item-name" id="watchModel">Watch Model</div>
                 <div class="card-details" id="watchDetails">Details</div>
             </div>
@@ -224,7 +225,7 @@
 let currentGender = 'Men';
 let currentStyle = '1';
 
-// --- FIXED CHIC ACCESSIBLE WATCHES & PREMIUM NIÇHE FRAGRANCES ---
+// --- CLEAN ACCESSIBLE WATCHES & PREMIUM FRAGRANCES ---
 const database = {
     "Men": {
         "1": {
@@ -257,7 +258,7 @@ const database = {
             "Watch_Details": "Features a sleek, rugged octagonal brushed steel bezel that commands immense urban design respect. Translates modern industrial geometric lines into a durable, shock-resistant hype culture staple.",
             "Perfume": "Lattafa - Khamrah",
             "Perfume_Notes": "Top: Cinnamon, Nutmeg, Bergamot | Heart: Praline, Dates, Tuberose | Base: Vanilla, Tonka Bean, Myrrh, Amberwood",
-            "Perfume_Details": "A viral, intensely projecting sweet oriental gourmand wrapped in warm spices, praline, and boozy dates. Perfect for cutting through crowds and matching bold silhouettes or limited-run streetwear.",
+            "Perfume_Details": "A viral, intensely projecting sweet oriental gourmand wrapped in warm spices, praline, and boozy dates. Perfect for cutting through crowds and matching bold silhouettes or limited-run streetwear."
         },
         "5": {
             "Style": "Sporty / Active Lifestyle",
@@ -282,7 +283,7 @@ const database = {
             "Watch": "Longines DolceVita Steel",
             "Watch_Details": "A gorgeous rectangular art-deco steel watch displaying clean Roman numerals. Its historic lineage offers genuine horological pedigree while keeping a beautifully restrained, classic elite profile.",
             "Perfume": "Parfums de Marly - Delina",
-            "Perfume_Notes": "Top: Litchi, Rhubarb, Bergamot, Nutmeg | Heart: Turkish Rose, Peony, Musk, Vanilla | Base: Cashmeran, Cedar, Incense",
+            "Perfume_Notes": "Top: Litchi, Rhubarb, Bergamot | Heart: Turkish Rose, Peony, Musk, Vanilla | Base: Cashmeran, Cedar, Incense",
             "Perfume_Details": "A magnificent, sophisticated floral bouquet led by premium Turkish rose and fresh lychee. Radiates a deeply cultured, feminine grace that complements silk layers and classic cashmere perfectly."
         },
         "2": {
