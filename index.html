@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scent & Time Luxury Curator</title>
+    <title>Scent For You With Watches</title>
     <style>
         * {
             box-sizing: border-box;
@@ -12,8 +12,8 @@
             font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         body {
-            background-color: #0B0F19;
-            color: #F3F4F6;
+            background-color: #FFFFFF;
+            color: #111111;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
@@ -26,34 +26,32 @@
         header {
             text-align: center;
             margin-bottom: 40px;
-            border-bottom: 1px solid #1F2937;
+            border-bottom: 2px solid #111111;
             padding-bottom: 20px;
         }
         h1 {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #9CA3AF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            color: #111111;
             margin-bottom: 8px;
             text-transform: uppercase;
         }
         .subtitle {
-            color: #9CA3AF;
+            color: #666666;
             font-size: 15px;
             font-style: italic;
         }
         .section-title {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #4B5563;
+            color: #888888;
             margin-bottom: 15px;
             margin-top: 35px;
         }
-        /* Modern Premium Button Grid */
+        /* Minimalist High-Contrast Button Grid */
         .btn-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -64,35 +62,34 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         }
         .custom-btn {
-            background-color: #111827;
-            border: 1px solid #374151;
-            color: #9CA3AF;
+            background-color: #FFFFFF;
+            border: 2px solid #E5E7EB;
+            color: #555555;
             padding: 16px 20px;
-            border-radius: 12px;
+            border-radius: 8px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease-in-out;
             text-align: center;
         }
         .custom-btn:hover {
-            background-color: #1F2937;
-            color: #FFF;
-            border-color: #4B5563;
-            transform: translateY(-2px);
+            background-color: #F9FAFB;
+            color: #111111;
+            border-color: #111111;
         }
         .custom-btn.active {
-            background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
-            border-color: #60A5FA;
+            background-color: #111111;
+            border-color: #111111;
             color: #FFFFFF;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        /* Dynamic Render Display Architecture */
+        /* Dynamic Render Architecture */
         .result-wrapper {
             margin-top: 40px;
             opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(10px);
+            transition: all 0.3s ease-in-out;
         }
         .result-wrapper.show {
             opacity: 1;
@@ -100,14 +97,14 @@
         }
         .result-header {
             text-align: center;
-            font-size: 16px;
-            font-weight: 700;
-            color: #FFF;
+            font-size: 15px;
+            font-weight: 800;
+            color: #111111;
             margin-bottom: 25px;
             padding: 14px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            border-left: 4px solid #3B82F6;
+            background: #F3F4F6;
+            border-radius: 6px;
+            border-left: 4px solid #111111;
             letter-spacing: 1px;
         }
         .result-container {
@@ -121,13 +118,12 @@
             }
         }
         .card {
-            background: #1F2937;
-            border: 1px solid #374151;
-            border-radius: 16px;
+            background: #FAFAFA;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
             padding: 26px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .card::before {
             content: '';
@@ -137,46 +133,46 @@
             width: 100%;
             height: 4px;
         }
-        .watch-card::before { background: #3B82F6; }
-        .perfume-card::before { background: #10B981; }
+        .watch-card::before { background: #111111; }
+        .perfume-card::before { background: #666666; }
 
         .card-type {
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #9CA3AF;
+            color: #777777;
             margin-bottom: 14px;
         }
         .item-name {
             font-size: 22px;
-            font-weight: 700;
-            color: #FFF;
+            font-weight: 800;
+            color: #111111;
             margin-bottom: 10px;
         }
         .notes-badge {
             font-size: 12px;
-            color: #10B981;
-            background: rgba(16, 185, 129, 0.1);
+            color: #222222;
+            background: #EAEAEA;
             padding: 8px 12px;
-            border-radius: 8px;
+            border-radius: 6px;
             display: block;
             margin-bottom: 15px;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1.5;
-            border: 1px solid rgba(16, 185, 129, 0.2);
         }
         .card-details {
             font-size: 14px;
             line-height: 1.6;
-            color: #D1D5DB;
+            color: #444444;
+            text-align: justify;
         }
         footer {
             text-align: center;
-            color: #4B5563;
+            color: #999999;
             font-size: 12px;
             margin-top: 60px;
-            border-top: 1px solid #1F2937;
+            border-top: 1px solid #E5E7EB;
             padding-top: 20px;
         }
     </style>
@@ -185,8 +181,8 @@
 
 <div class="container">
     <header>
-        <h1>Scent & Time Luxury Curator</h1>
-        <p class="subtitle">Complete Technical Specification, UI Architecture, and Accessible Recommendation Engine</p>
+        <h1>Scent For You With Watches</h1>
+        <p class="subtitle">Curate Your Olfactory and Horological Identity Seamlessly</p>
     </header>
 
     <div class="section-title">1. Select Perspective</div>
@@ -224,113 +220,113 @@
         </div>
     </div>
 
-    <footer>Scent & Time Curator © 2026</footer>
+    <footer>Scent For You With Watches © 2026</footer>
 </div>
 
 <script>
 let currentGender = 'Men';
 let currentStyle = '1';
 
-// --- ACCESSIBLE WATCH & LUXURY NIŞ PERFUME DATABASE (ZERO PATEK / ZERO ROLEX) ---
+// --- COMPLETELY ACCESSIBLE WATCH & LUXURY ORIGINAL PERFUME DATABASE ---
 const database = {
     "Men": {
         "1": {
             "Style": "Old Money / Quiet Luxury",
             "Watch": "Seiko Presage 'Cocktail Time' (SRPB43)",
-            "Watch_Details": "Çarpıcı, elmas kesim indekslere sahip buz mavisi sunburst kadranı ve otomatik mekanizmasıyla bilinir. Aşırı lüks fiyat etiketleri olmadan saf İsviçre/Japon aristokrat zarafetini yakalayan, saat meraklılarının saygı duyduğu gerçek bir klasik.",
+            "Watch_Details": "Features a stunning, deeply textured ice-blue sunburst dial with sharp diamond-cut indices and an automatic mechanical movement. It offers incredible heritage and timeless grace without the astronomical luxury price tag.",
             "Perfume": "Creed - Green Irish Tweed",
-            "Perfume_Notes": "Üst Notalar: Limon Otu, İris | Kalp Notalar: Menekşe Yaprağı | Alt Notalar: Ambergris, Sandal Ağacı.",
-            "Perfume_Details": "Asil, temiz ve zamansız bir centilmen kokusu. İrlanda kırsalını andıran bu asil fujer tarzı, logo barındırmayan kaliteli kıyafetlerle kusursuz bir uyum sağlar."
+            "Perfume_Notes": "Top: Lemon Verbena, Iris | Heart: Violet Leaf | Base: Ambergris, Mysore Sandalwood.",
+            "Perfume_Details": "A noble, clean, and classic gentleman's fougère. Evoking the fresh rolling hills of the countryside, it perfectly complements premium, unbranded tailoring and linen essentials."
         },
         "2": {
             "Style": "Casual Chic / Elevated Daily",
-            "Watch": "Tissot PRX Powermatic 80 (Mavi Kadran)",
-            "Watch_Details": "Entegre çelik bileziği, lüks waffle kadran tasarımı ve 80 saatlik muazzam güç rezerviyle son yılların en büyük tasarım başarısı. Gömlek ve denim kombinlerini anında üst seviyeye taşır.",
+            "Watch": "Tissot PRX Powermatic 80 (Blue Dial)",
+            "Watch_Details": "A modern Swiss-made icon featuring a dynamic integrated steel bracelet and an exquisite blue waffle dial. Powered by an impressive 80-hour power reserve movement, it effortlessly elevates basic shirts and tailored denim.",
             "Perfume": "Bleu de Chanel (Eau de Parfum)",
-            "Perfume_Notes": "Üst Notalar: Greyfurt, Limon, Nane, Pembe Biber | Kalp Notalar: Zencefil, Ceviz, Yasemin | Alt Notalar: Tütsü, Vetiver, Sedir, Sandal Ağacı.",
-            "Perfume_Details": "Taze narenciyelerin zengin ve kadifemsi odunsu notalarla birleşimi. Son derece karizmatik, her ortama uyan, zahmetsiz bir modern erkek aurası sunar."
+            "Perfume_Notes": "Top: Grapefruit, Lemon, Mint, Pink Pepper | Heart: Ginger, Nutmeg, Jasmine | Base: Incense, Vetiver, Cedar, Sandalwood.",
+            "Perfume_Details": "A masterfully balanced blue composition fusing crisp, clean citruses with a velvety amber-woods backdrop. It leaves an extremely reliable, sharp, and confident daily trail."
         },
         "3": {
             "Style": "Classic Business / Formal",
             "Watch": "Hamilton Jazzmaster Viewmatic Auto",
-            "Watch_Details": "İsviçre saatçilik mirasının en asil ve ulaşılabilir temsilcilerinden biri. Gümüş dokulu kadranı ve şık kasa yapısıyla, iş toplantılarında ve takım elbiselerin altında mutlak bir profesyonellik ve ciddiyet sembolüdür.",
+            "Watch_Details": "A premier example of accessible Swiss horology. Its beautifully textured silver dial and sharp case structure fit perfectly under suit cuffs, symbolizing executive presence and professional execution.",
             "Perfume": "Xerjoff - Naxos",
-            "Perfume_Notes": "Üst Notalar: Lavanta, Bergamot, Limon | Kalp Notalar: Bal, Tarçın, Kaşmeran, Yasemin | Alt Notalar: Tütün Yaprağı, Tonka Fasulyesi, Vanilya.",
-            "Perfume_Details": "Sicilya esintili, zengin bir niş başyapıt. Tatlı bal ve pürüzsüz tütün yapraklarının birleşimi, girdiğiniz her toplantıda kalitenizi ve ağırlığınızı hissettirir."
+            "Perfume_Notes": "Top: Lavender, Bergamot, Lemon | Heart: Honey, Cinnamon, Cashmeran, Jasmine | Base: Tobacco Leaf, Tonka Bean, Vanilla.",
+            "Perfume_Details": "An opulent, rich niche masterpiece blending sweet Mediterranean honey with smooth, sophisticated tobacco leaves. Ideal for commanding respect in corporate environments."
         },
         "4": {
             "Style": "Streetwear / Modern Hype",
             "Watch": "Casio G-Shock GM-S2100 'CasiOak Metal'",
-            "Watch_Details": "Fütüristik sekizgen çelik bezeliyle sokak modasının en büyük ikonu. AP Royal Oak tasarım dilini, sokak kültürünün dayanıklılığı ve hype estetiğiyle harmanlayan vazgeçilmez bir parça.",
+            "Watch_Details": "Boasts a stealthy, sharp octagonal brushed steel bezel that brings heavy urban credibility. It seamlessly translates high-end luxury design codes into a rugged, contemporary streetwear essential.",
             "Perfume": "Lattafa - Khamrah",
-            "Perfume_Notes": "Üst Notalar: Tarçın, Muskat, Bergamot | Heart Notalar: Pralin, Hurma, Sümbülteber | Alt Notalar: Vanilya, Tonka Fasulyesi, Mür, Amberwood.",
-            "Perfume_Details": "Yoğun baharatlar, tatlı pralin ve hurma notaları içeren devasa yayılımlı viral bir koku bombası. Büyük silüetli kıyafetler ve sneaker kültürünün ruhuna tam uyar."
+            "Perfume_Notes": "Top: Cinnamon, Nutmeg, Bergamot | Heart: Praline, Dates, Tuberose | Base: Vanilla, Tonka Bean, Myrrh, Amberwood.",
+            "Perfume_Details": "A viral, heavily projecting oriental gourmand bomb wrapped in rich warm spices, sweet praline, and boozy dates. Perfect for making a distinct statement in dynamic urban spaces."
         },
         "5": {
             "Style": "Sporty / Active Lifestyle",
             "Watch": "Seiko Prospex Diver 'Turtle' (SRPE93)",
-            "Watch_Details": "Gerçek saat koleksiyoncularının gözbebeği olan ikonik 'Turtle' kasa yapısı. 200 metre su geçirmezliği ve sarsılmaz otomatik mekanizmasıyla aktif, dinamik ve maceracı bir yaşam tarzının en sağlam göstergesi.",
+            "Watch_Details": "Highly revered by watch collectors for its historic cushion-shaped case design. Offers rugged 200-meter water resistance and a highly durable automatic calibre built for active, adventurous pursuits.",
             "Perfume": "Creed - Aventus",
-            "Perfume_Notes": "Üst Notalar: Ananas, Bergamot, Siyah Frenk Üzümü, Elma | Kalp Notalar: Huş Ağacı, Yamaç, Yasemin | Alt Notalar: Misk, Meşe Yosunu, Ambergris.",
-            "Perfume_Details": "Güç ve dinamizm odaklı, meyveli ve dumanlı efsanevi kompozisyon. Aktif yaşamda ve spor şık giyimde etrafınıza saf bir başarı gücü ve enerji yayar."
+            "Perfume_Notes": "Top: Pineapple, Bergamot, Blackcurrant, Apple | Heart: Birch, Patchouli, Jasmine | Base: Musk, Oakmoss, Ambergris, Vanilla.",
+            "Perfume_Details": "The ultimate power-focused, fruit-forward woody signature. Driven by contrasting notes of fresh pineapple and smoky birch wood, it perfectly matches premium athletic wear and high-octane energy."
         },
         "6": {
             "Style": "Night Out / Date Night",
             "Watch": "Junghans Max Bill Automatic",
-            "Watch_Details": "Minimalizmin doruk noktası olan efsanevi Bauhaus tasarımı. İnce yapısı, kubbe camı ve asil kadranıyla gece etkinliklerinde, loş ışıklı mekanlarda büyüleyici ve entelektüel bir şıklık sunar.",
+            "Watch_Details": "The absolute pinnacle of legendary Bauhaus minimalist design. Its ultra-slim profile, clean face, and curved crystal catch dim evening light elegantly, adding an intellectual sharpness to night-out attire.",
             "Perfume": "Sospiro - Erba Pura",
-            "Perfume_Notes": "Üst Notalar: Portakal, Bergamot, Limon | Kalp Notalar: Akdeniz Meyveleri | Alt Notalar: Beyaz Misk, Madagaskar Vanilyası, Amber.",
-            "Perfume_Details": "Manyetik, odadaki herkesin dikkatini anında çeken yoğun meyve ve pudralı beyaz misk bombası. Gece hayatında arkanızda unutulmaz, baştan çıkarıcı bir iz bırakır."
+            "Perfume_Notes": "Top: Sicilian Orange, Calabrian Bergamot, Lemon | Heart: Mediterranean Fruits | Base: White Musk, Madagascar Vanilla, Amber.",
+            "Perfume_Details": "An extraordinarily magnetic explosion of fresh Mediterranean fruits resting on an intense, seductive white musk base. It has unmatched, room-filling sillage designed to leave an unforgettable late-night impression."
         }
     },
     "Women": {
         "1": {
             "Style": "Old Money / Quiet Luxury",
             "Watch": "Longines DolceVita Steel",
-            "Watch_Details": "Art Deco mimarisinden ilham alan dikdörtgen asil kasa tasarımı. Roma rakamlı kadranıyla, bağırarak değil fısıldayarak konuşan saf bir zarafet ve yüksek kaliteli köklü miras göstergesi.",
+            "Watch_Details": "Inspired by timeless Art Deco architecture, featuring an elegant rectangular steel case and classic Roman numerals. It projects generational wealth and aristocratic grace through understatement.",
             "Perfume": "Parfums de Marly - Delina",
-            "Perfume_Notes": "Üst Notalar: Lychee, Ravend, Bergamot | Kalp Notalar: Türk Gülü, Şakayık, Misk, Vanilya | Alt Notalar: Kaşmeran, Sedir, Tütsü.",
-            "Perfume_Details": "Pudra pembesi, kadife zarafetinde muhteşem bir Türk gülü ve lychee buketi. Kaliteli ipek eşarplar ve kaşmir trikolarla harika bütünleşir."
+            "Perfume_Notes": "Top: Litchi, Rhubarb, Bergamot | Heart: Turkish Rose, Peony, Musk, Vanilla | Base: Cashmeran, Cedar, Incense.",
+            "Perfume_Details": "A magnificent, multi-faceted floral bouquet dominated by exquisite Turkish rose and fresh lychee. It radiates an elite, cultured aura that pairs beautifully with silk and premium cashmere layers."
         },
         "2": {
             "Style": "Casual Chic / Elevated Daily",
-            "Watch": "Tissot PRX 35mm (Çelik Gümüş Kadran)",
-            "Watch_Details": "Kadınlar için özel üretilmiş 35mm kasa çapı ve entegre retro bilezik formu. 'Clean-girl' estetiğini, günlük şık bir gömlek-jean kombiniyle zahmetsizce tamamlar.",
+            "Watch": "Tissot PRX 35mm (Silver Dial)",
+            "Watch_Details": "Downsized into a highly comfortable 35mm profile with a sleek integrated retro bracelet. It anchors a beautifully manicured, effortless 'clean-girl' daily aesthetic perfectly.",
             "Perfume": "Chanel - Chance Eau Tendre (EDP)",
-            "Perfume_Notes": "Üst Notalar: Ayva, Greyfurt | Kalp Notalar: Gül, Yasemin | Alt Notalar: Beyaz Misk.",
-            "Perfume_Details": "Ayva ve soft yasemin merkezli, insana neşe veren tertemiz, taze bir koku. Son derece bakımlı, fresh ve duru bir imaj çizer."
+            "Perfume_Notes": "Top: Quince, Grapefruit | Heart: Rose, Jasmine | Base: White Musk.",
+            "Perfume_Details": "An incredibly radiant, optimistic fruity-floral scent centered on crisp quince and soft musk. It presents a refreshing, impeccably groomed, and polished daily companion."
         },
         "3": {
             "Style": "Classic Business / Formal",
             "Watch": "Longines Master Collection Women's Auto",
-            "Watch_Details": "İsviçre mekanik saatçiliğinin gerçek bir örneği olan structured otomatik mekanizmalı şık model. Ofis ortamında ve resmi davetlerde mutlak gücü, zekayı ve profesyonelliği temsil eder.",
+            "Watch_Details": "A stellar exhibition of authentic Swiss mechanical watchmaking. Its structured case, clean face, and fine bracelet layout communicate undeniable corporate intellect, executive authority, and reliability.",
             "Perfume": "Maison Francis Kurkdjian - Baccarat Rouge 540",
-            "Perfume_Notes": "Üst Notalar: Safran, Yasemin | Kalp Notalar: Amberwood, Ambergris | Alt Notalar: Çam Reçinesi, Sedir.",
-            "Perfume_Details": "Havadar safran ve kristalize amber notalarıyla yapılmış ultra sofistike bir imza. Yönetici gücünü ve modern lüks duruşu tam anlamıyla hissettirir."
+            "Perfume_Notes": "Top: Saffron, Jasmine | Heart: Amberwood, Ambergris | Base: Fir Resin, Cedar.",
+            "Perfume_Details": "An ultra-sophisticated, poetic signature delivering an airy sillage of ambergris, crystalline jasmine, and fresh cedarwood. The benchmark of modern leadership and premium presence."
         },
         "4": {
             "Style": "Streetwear / Modern Hype",
             "Watch": "Casio G-MS 'Metal Bezel' (GM-S5600)",
-            "Watch_Details": "Klasik kare ikonik G-Shock formunun, fırçalanmış rose gold metal bezel ile sokak stiline uyarlanmış hali. Tasarım gücü yüksek, dayanıklı ve tam bir sokak modası tamamlayıcısı.",
+            "Watch_Details": "Elevates the classic digital square profile into a streetwear staple with a beautifully brushed metal bezel protective structure. Sharp, durable, and packed with subculture relevance.",
             "Perfume": "Tom Ford - Lost Cherry",
-            "Perfume_Notes": "Üst Notalar: Acı Badem, Siyah Kiraz, Kiraz Likörü | Kalp Notalar: Vişne, Erik, Türk Gülü | Alt Notalar: Tonka Fasulyesi, Vanilya, Tarçın, Sandal Ağacı.",
-            "Perfume_Details": "Asi, eğlenceli, tatlı kiraz likörü ve acı badem kontrastı. Sanatsal duruşuyla oversize kıyafetler ve popüler sokak giyimiyle kusursuz eşleşir."
+            "Perfume_Notes": "Top: Bitter Almond, Black Cherry, Cherry Liqueur | Heart: Sour Cherry, Plum, Turkish Rose | Base: Tonka Bean, Vanilla, Cinnamon, Sandalwood.",
+            "Perfume_Details": "A bold, rebellious, and full-bodied gourmand clash of dark cherry liqueur and bitter almond. Playful yet intensely artistic, it blends seamlessly with oversized cuts and limited footwear."
         },
         "5": {
             "Style": "Sporty / Active Lifestyle",
             "Watch": "Seiko Prospex 200M Diver Automatic",
-            "Watch_Details": "Performans odaklı yapısı, güçlü gece aydınlatmalı indeksleri ve 200M profesyonel su yalıtımıyla lüks aktif giyimin, tenis kortlarının ve dinamik yaşamın vazgeçilmez saat meraklısı parçası.",
+            "Watch_Details": "Engineered with professional 200-meter water resistance and heavily luminescent markers. It flawlessly connects technical performance utility with an energetic, premium lifestyle choice.",
             "Perfume": "Jo Malone - Wood Sage & Sea Salt",
-            "Perfume_Notes": "Üst Notalar: Ambrette Tohumu | Kalp Notalar: Deniz Tuzu, Deniz Yosunu | Alt Notalar: Adaçayı, Greyfurt.",
-            "Perfume_Details": "Rüzgarlı uçurumlar ve dalgalanan deniz tuzunun mineral ferahlığı. Tamamen abartısız, temiz, enerjik ve sağlıklı yaşam tarzına adanmış mükemmel bir koku."
+            "Perfume_Notes": "Top: Ambrette Seeds | Heart: Sea Salt, Seaweed | Base: Sage, Grapefruit.",
+            "Perfume_Details": "Windswept and mineral. Evokes crisp ocean air mixed with crashing waves and drifting sea salt. Completely unpretentious and ideal for a vibrant, health-conscious active profile."
         },
         "6": {
             "Style": "Night Out / Date Night",
             "Watch": "Bulova Rubaiyat Diamond",
-            "Watch_Details": "Saat 12 konumuna gizlenmiş kurma kolu ve kadrandaki elmas detaylarıyla mücevher-saat formunun harika bir örneği. Gece kulüpleri ve şık akşam yemeklerinde göz kamaştırır.",
+            "Watch_Details": "An artistic watch-as-jewelry statement featuring an iconic crown placement at 12 o'clock and delicate hand-set diamond markers. It shimmers beautifully under club and evening lounge lights.",
             "Perfume": "Yves Saint Laurent - Black Opium (Le Parfum)",
-            "Perfume_Notes": "Üst Notalar: Armut, Tarçın, Yeşil Mandalina | Kalp Notalar: Yasemin, Portakal Çiçeği | Alt Notalar: Madagaskar Vanilyası, Kahve, Yamaç.",
-            "Perfume_Details": "Yoğun siyah kahve, koyu vanilya çekirdekleri ve beyaz çiçeklerin geceye hükmeden hipnotik birleşimi. Loş ortamlarda etrafınıza tam bir çekim gücü yayar."
+            "Perfume_Notes": "Top: Pear, Cinnamon, Green Mandarin | Heart: Jasmine Sambac, Orange Blossom | Base: Madagascar Vanilla, Coffee, Patchouli.",
+            "Perfume_Details": "A deeply sensual, addictive nocturnal gourmand driven by rich black coffee, warm vanilla pods, and white florals. Acts as an absolute magnetic aura in low-light evening spaces."
         }
     }
 };
@@ -363,11 +359,11 @@ function updateDisplay() {
         document.getElementById("watchModel").innerText = match.Watch;
         document.getElementById("watchDetails").innerText = match.Watch_Details;
         document.getElementById("perfumeName").innerText = match.Perfume;
-        document.getElementById("perfumeNotes").innerText = `Koku Notaları: ${match.Perfume_Notes}`;
+        document.getElementById("perfumeNotes").innerText = `Olfactory Notes: ${match.Perfume_Notes}`;
         document.getElementById("perfumeDetails").innerText = match.Perfume_Details;
         
         wrapper.classList.add('show');
-    }, 200);
+    }, 150);
 }
 
 // Initial initialization
