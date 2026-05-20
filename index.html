@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scent For You With Watches</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: #FFFFFF;
+            color: #111111;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #E9ECEF;
+            margin: 20px 0;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .radio-group, .select-group {
+            margin-bottom: 25px;
+        }
+        .radio-options {
+            display: flex;
+            gap: 20px;
+        }
+        label {
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #CCCCCC;
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: #FFF;
+            outline: none;
+            cursor: pointer;
+        }
+        select:focus {
+            border-color: #111111;
+        }
+        .result-container {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 600px) {
+            .result-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .watch-card {
+            background-color: #F8F9FA;
+            border: 1px solid #E9ECEF;
+        }
+        .perfume-card {
+            background-color: #F4FBF7;
+            border: 1px solid #E1F5EB;
+        }
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .item-name {
+            font-family: monospace;
+            font-size: 15px;
+            background-color: rgba(0,0,0,0.05);
+            padding: 4px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        .card-details {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333333;
+        }
+        .notes-badge {
+            font-size: 13px;
+            color: #1E7E34;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        footer {
+            text-align: center;
+            color: #888888;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>⌚ Scent For You With Watches 🧪</h1>
+    <p class="subtitle">Curate your perfect style identity effortlessly</p>
+    <hr>
+
+    <div class="radio-group">
+        <div class="section-title">1. Select Your Gender:</div>
+        <div class="radio-options">
+            <label><input type="radio" name="gender" value="Men" checked onchange="updateMatch()"> Men</label>
+            <label><input type="radio" name="gender" value="Women" onchange="updateMatch()"> Women</label>
+        </div>
+    </div>
+
+    <div class="select-group">
+        <div class="section-title">2. Choose Your Outfit Style for Today:</div>
+        <select id="styleSelect" onchange="updateMatch()">
+            <option value="1">1. Old Money</option>
+            <option value="2">2. Casual</option>
+            <option value="3">3. Classic</option>
+            <option value="4">4. Sport</option>
+            <option value="5">5. Special Night</option>
+        </select>
+    </div>
+
+    <hr>
+
+    <h3 style="text-align: center; font-size: 16px; margin-top: 10px;" id="resultHeader">✨ Your Match ✨</h3>
+    
+    <div class="result-container">
+        <div class="card watch-card">
+            <div class="card-title">⌚ Recommended Watch</div>
+            <div class="item-name" id="watchModel">Loading...</div>
+            <div class="card-details" id="watchDetails">Loading...</div>
+        </div>
+
+        <div class="card perfume-card">
+            <div class="card-title">🧪 Recommended Perfume</div>
+            <div class="item-name" id="perfumeName">Loading...</div>
+            <div class="notes-badge" id="perfumeNotes">Loading...</div>
+            <div class="card-details" id="perfumeDetails">Loading...</div>
+        </div>
+    </div>
+
+    <footer>Scent For You With Watches © 2026</footer>
+</div>
+
+<script>
+// --- AUTHENTIC & ORIGINAL LUXURY DATABASE ---
+const database = {
+    "Men": {
+        "1": {
+            "Style": "Old Money",
+            "Watch": "Patek Philippe Calatrava",
+            "Watch_Details": "An iconic dress watch featuring a minimalist dial, ultra-thin profile, and a premium alligator leather strap. It represents timeless elegance without shouting.",
+            "Perfume": "Xerjoff - Naxos",
+            "Perfume_Notes": "Top: Lavender, Bergamot, Lemon | Heart: Honey, Cinnamon, Cashmeran, Jasmine | Base: Tobacco Leaf, Tonka Bean, Vanilla.",
+            "Perfume_Details": "A luxurious, authentic blend of sweet honey and rich tobacco. It perfectly complements a high-end, sophisticated lifestyle with its opulent yet smooth sillage."
+        },
+        "2": {
+            "Style": "Casual",
+            "Watch": "Tissot PRX Powermatic 80",
+            "Watch_Details": "Featuring an integrated steel bracelet and a waffle dial, this watch offers a perfect 1970s retro-modern aesthetic for daily wear.",
+            "Perfume": "Lattafa - Khamrah",
+            "Perfume_Notes": "Top: Cinnamon, Nutmeg, Bergamot | Heart: Dates, Praline, Tuberose, Mahonial | Base: Vanilla, Tonka Bean, Myrrh, Benzoin, Amberwood.",
+            "Perfume_Details": "An original, warm, sweet gourmand fragrance with a strong presence. Ideal for making a stylish statement during daily routines or casual gatherings."
+        },
+        "3": {
+            "Style": "Classic",
+            "Watch": "Rolex Datejust (Fluted Bezel / Jubilee Bracelet)",
+            "Watch_Details": "The ultimate symbol of classic horology. The fluted bezel catches the light perfectly, making it the supreme choice for sharp suits and formal events.",
+            "Perfume": "Tom Ford - Grey Vetiver (Eau de Parfum)",
+            "Perfume_Notes": "Top: Grapefruit, Orange Blossom, Sage | Heart: Nutmeg, Orris Root, Pimento | Base: Vetiver, Woodsy Notes, Oakmoss, Amber.",
+            "Perfume_Details": "A masterpiece of classic tailoring. This original fragrance features a clean, silver-toned, sophisticated vetiver note that pairs impeccably with sharp executive attire."
+        },
+        "4": {
+            "Style": "Sport",
+            "Watch": "Rolex Submariner Date",
+            "Watch_Details": "The most legendary dive watch in history. Its robust Oystersteel construction and black Cerachrom bezel deliver a powerful, masculine, and sporty look.",
+            "Perfume": "Sospiro - Erba Pura",
+            "Perfume_Notes": "Top: Sicilian Orange, Calabrian Bergamot, Sicilian Lemon | Heart: Mediterranean Fruits | Base: White Musk, Amber, Madagascar Vanilla.",
+            "Perfume_Details": "A modern, vibrant explosion of fresh Mediterranean fruits and heavy amber. High projection makes it ideal for dynamic streetwear and active outfits."
+        },
+        "5": {
+            "Style": "Special Night",
+            "Watch": "Patek Philippe Grandmaster Chime",
+            "Watch_Details": "One of the most complex wristwatches ever created, boasting intricate acoustic complications. An absolute masterpiece reserved for the most exclusive evenings.",
+            "Perfume": "Xerjoff - Alexandria II",
+            "Perfume_Notes": "Top: Palisander Rosewood, Lavender, Cinnamon, Apple | Heart: Rose, Cedar, Lily-of-the-Valley | Base: Agarwood (Oud), Sandalwood, Vanilla, Amber, Musk.",
+            "Perfume_Details": "A majestic and complex oud-centered masterpiece. It projects extreme luxury, mystery, and unparalleled depth, making it unforgettable for a special night."
+        }
+    },
+    "Women": {
+        "1": {
+            "Style": "Old Money",
+            "Watch": "Cartier Tank Louis Cartier",
+            "Watch_Details": "A historic rectangular design with Roman numerals and blue steel hands. It is the definition of understatement, heritage, and refined taste.",
+            "Perfume": "Xerjoff - Casamorati Bouquet Ideale",
+            "Perfume_Notes": "Top: Cinnamon, Nutmeg | Heart: Guaiac Wood, Sandalwood, Cedar, Papyrus | Base: Vanilla, Coumarin, Amber, Musk, French Labdamum.",
+            "Perfume_Details": "An elegant, powdery, and woody-spicy fragrance. It wraps you like a high-quality cashmere scarf, embodying pure wealth and grace."
+        },
+        "2": {
+            "Style": "Casual",
+            "Watch": "Tissot PRX 35mm (Mint Green Dial)",
+            "Watch_Details": "A sleek, smaller profile integrated bracelet watch with a striking dial color. It adds a touch of sharp, effortless chic style to everyday outfits.",
+            "Perfume": "Lattafa - Yara",
+            "Perfume_Notes": "Top: Orchid, Heliotrope, Tangerine | Heart: Gourmand Accord, Tropical Fruits | Base: Vanilla, Musk, Sandalwood.",
+            "Perfume_Details": "A soft, creamy, and fluffy strawberry-vanilla scent. Highly addictive, feminine, and perfect for bright, casual day-to-day wear."
+        },
+        "3": {
+            "Style": "Classic",
+            "Watch": "Jaeger-LeCoultre Reverso Duetto",
+            "Watch_Details": "An art-deco masterpiece with a swiveling case. One side is clean and classic for the daytime, while the other features diamond accents for formal attire.",
+            "Perfume": "Chanel - Coco Mademoiselle",
+            "Perfume_Notes": "Top: Orange, Bergamot, Grapefruit | Heart: Rose, Jasmine, Litchi | Base: Patchouli, Bourbon Vanilla, White Musk, Vetiver.",
+            "Perfume_Details": "A sharp, sophisticated patchouli and citrus composition. The benchmark of classic feminine elegance, perfect for formal and professional settings."
+        },
+        "4": {
+            "Style": "Sport",
+            "Watch": "Omega Seamaster Aqua Terra",
+            "Watch_Details": "A beautiful blend of maritime heritage and robust sportiness. Features a clean dial and excellent durability for an active, dynamic lifestyle.",
+            "Perfume": "Sospiro - Erba Gold",
+            "Perfume_Notes": "Top: Calabrian Bergamot, Brazilian Orange, Sicilian Lemon, Ginger | Heart: Melon, Pear, Green Apple, Cinnamon, Cardamom | Base: Amber, Musk, Woody Notes.",
+            "Perfume_Details": "A fresh, energetic, and loud luxury fragrance. The heavy fruit and ginger notes match perfectly with premium streetwear and luxury sportswear."
+        },
+        "5": {
+            "Style": "Special Night",
+            "Watch": "Audemars Piguet Royal Oak (Rose Gold)",
+            "Watch_Details": "The iconic octagonal bezel combined with luxury materials. It is a bold statement piece that shimmers beautifully under evening lights.",
+            "Perfume": "Maison Francis Kurkdjian - Baccarat Rouge 540 Extrait",
+            "Perfume_Notes": "Top: Bitter Almond, Saffron | Heart: Egyptian Jasmine, Cedar | Base: Ambergris, Woody Notes, Musk.",
+            "Perfume_Details": "An intoxicating, rich, and viral scent profile. Its unique blend of burnt sugar warmth and crystalline ambergris creates an elite aura for grand evening events."
+        }
+    }
+};
+
+function updateMatch() {
+    // Get selected gender
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    // Get selected style index
+    const styleVal = document.getElementById("styleSelect").value;
+    
+    const match = database[gender][styleVal];
+    
+    // Update HTML Content dynamically
+    document.getElementById("resultHeader").innerText = `✨ Your Match for ${gender} - ${match.Style} ✨`;
+    document.getElementById("watchModel").innerText = match.Watch;
+    document.getElementById("watchDetails").innerText = match.Watch_Details;
+    document.getElementById("perfumeName").innerText = match.Perfume;
+    document.getElementById("perfumeNotes").innerText = `Notes: ${match.Perfume_Notes}`;
+    document.getElementById("perfumeDetails").innerText = match.Perfume_Details;
+}
+
+// Run once on load to initialize first view
+updateMatch();
+</script>
+
+</body>
+</html>
