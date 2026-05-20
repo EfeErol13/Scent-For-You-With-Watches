@@ -11,10 +11,10 @@
             padding: 0;
             font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
-        /* PURE WHITE BACKGROUND */
+        /* ABSOLUTE PURE WHITE EVERYWHERE */
         body {
             background-color: #FFFFFF;
-            color: #111111;
+            color: #000000;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
@@ -23,23 +23,25 @@
         .container {
             max-width: 800px;
             width: 100%;
+            background-color: #FFFFFF;
         }
         header {
             text-align: center;
             margin-bottom: 40px;
-            border-bottom: 2px solid #111111;
+            border-bottom: 2px solid #000000;
             padding-bottom: 20px;
+            background-color: #FFFFFF;
         }
         h1 {
-            font-size: 30px;
+            font-size: 28px;
             font-weight: 800;
             letter-spacing: -0.5px;
-            color: #111111;
+            color: #000000;
             margin-bottom: 8px;
             text-transform: uppercase;
         }
         .subtitle {
-            color: #666666;
+            color: #444444;
             font-size: 14px;
             font-style: italic;
         }
@@ -48,11 +50,11 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #888888;
+            color: #000000;
             margin-bottom: 12px;
             margin-top: 30px;
         }
-        /* MINIMALIST BUTTON GRID */
+        /* PURE WHITE MINIMALIST BUTTONS WITH BLACK BORDERS */
         .btn-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -64,32 +66,30 @@
         }
         .custom-btn {
             background-color: #FFFFFF;
-            border: 2px solid #E5E7EB;
-            color: #555555;
+            border: 1px solid #000000;
+            color: #000000;
             padding: 14px 18px;
-            border-radius: 6px;
+            border-radius: 0px; /* Sharp, modern luxury edges */
             font-size: 13px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.15s ease-in-out;
+            transition: all 0.1s ease-in-out;
             text-align: center;
         }
         .custom-btn:hover {
-            background-color: #FAFAFA;
-            color: #111111;
-            border-color: #111111;
-        }
-        .custom-btn.active {
-            background-color: #111111;
-            border-color: #111111;
+            background-color: #000000;
             color: #FFFFFF;
         }
-        /* HIGH CONTRAST CARDS WITH LIGHT WHITE/GRAY BG */
+        .custom-btn.active {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+        /* OUTCOME RENDER AREA - ABSOLUTE WHITE */
         .result-wrapper {
             margin-top: 35px;
             opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.25s ease-in-out;
+            transform: translateY(5px);
+            transition: opacity 0.2s ease-in-out;
         }
         .result-wrapper.show {
             opacity: 1;
@@ -97,15 +97,14 @@
         }
         .result-header {
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 800;
-            color: #111111;
+            color: #000000;
             margin-bottom: 20px;
             padding: 12px;
-            background: #F3F4F6;
-            border-radius: 4px;
-            border-left: 4px solid #111111;
-            letter-spacing: 0.5px;
+            background: #FFFFFF;
+            border: 1px solid #000000;
+            letter-spacing: 1px;
         }
         .result-container {
             display: grid;
@@ -118,60 +117,53 @@
             }
         }
         .card {
-            background: #FAFAFA;
-            border: 1px solid #E5E7EB;
-            border-radius: 8px;
+            background: #FFFFFF;
+            border: 1px solid #000000;
+            border-radius: 0px;
             padding: 22px;
-            position: relative;
         }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-        }
-        .watch-card::before { background: #111111; }
-        .perfume-card::before { background: #666666; }
-
         .card-type {
             font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #777777;
+            color: #555555;
             margin-bottom: 10px;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 4px;
+            display: inline-block;
         }
         .item-name {
             font-size: 19px;
             font-weight: 800;
-            color: #111111;
-            margin-bottom: 8px;
+            color: #000000;
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
         .notes-badge {
             font-size: 11px;
-            color: #222222;
-            background: #EAEAEA;
-            padding: 6px 10px;
-            border-radius: 4px;
+            color: #000000;
+            background: #FFFFFF;
+            padding: 6px 0px;
             display: block;
             margin-bottom: 12px;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.4;
+            border-bottom: 1px dashed #000000;
         }
         .card-details {
-            font-size: 13.5px;
-            line-height: 1.5;
-            color: #444444;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #222222;
         }
         footer {
             text-align: center;
-            color: #999999;
+            color: #777777;
             font-size: 11px;
             margin-top: 50px;
-            border-top: 1px solid #E5E7EB;
+            border-top: 1px solid #000000;
             padding-top: 15px;
+            background-color: #FFFFFF;
         }
     </style>
 </head>
@@ -180,37 +172,37 @@
 <div class="container">
     <header>
         <h1>Scent For You With Watches</h1>
-        <p class="subtitle">Match Your Aesthetic with Accessible Timepieces and Fine Fragrances</p>
+        <p class="subtitle">Curate Your Olfactory and Horological Identity</p>
     </header>
 
     <div class="section-title">1. Select Perspective</div>
     <div class="btn-grid">
-        <button class="custom-btn active" id="btn-Men" onclick="setGender('Men')">♂ Men</button>
-        <button class="custom-btn" id="btn-Women" onclick="setGender('Women')">♀ Women</button>
+        <button class="custom-btn active" id="btn-Men" onclick="setGender('Men')">Men</button>
+        <button class="custom-btn" id="btn-Women" onclick="setGender('Women')">Women</button>
     </div>
 
     <div class="section-title">2. Choose Outfit Style Concept</div>
     <div class="btn-grid style-grid">
-        <button class="custom-btn active" id="btn-1" onclick="setStyle('1')">👔 Old Money / Quiet Luxury</button>
-        <button class="custom-btn" id="btn-2" onclick="setStyle('2')">👖 Casual Chic / Elevated Daily</button>
-        <button class="custom-btn" id="btn-3" onclick="setStyle('3')">💼 Classic Business / Formal</button>
-        <button class="custom-btn" id="btn-4" onclick="setStyle('4')">👟 Streetwear / Modern Hype</button>
-        <button class="custom-btn" id="btn-5" onclick="setStyle('5')">🚴 Sporty / Active Lifestyle</button>
-        <button class="custom-btn" id="btn-6" onclick="setStyle('6')">🌙 Night Out / Date Night</button>
+        <button class="custom-btn active" id="btn-1" onclick="setStyle('1')">Old Money / Quiet Luxury</button>
+        <button class="custom-btn" id="btn-2" onclick="setStyle('2')">Casual Chic / Elevated Daily</button>
+        <button class="custom-btn" id="btn-3" onclick="setStyle('3')">Classic Business / Formal</button>
+        <button class="custom-btn" id="btn-4" onclick="setStyle('4')">Streetwear / Modern Hype</button>
+        <button class="custom-btn" id="btn-5" onclick="setStyle('5')">Sporty / Active Lifestyle</button>
+        <button class="custom-btn" id="btn-6" onclick="setStyle('6')">Night Out / Date Night</button>
     </div>
 
     <div class="result-wrapper" id="resultWrapper">
-        <div class="result-header" id="resultHeader">✨ YOUR CURATED SELECTION ✨</div>
+        <div class="result-header" id="resultHeader">YOUR CURATED SELECTION</div>
         
         <div class="result-container">
             <div class="card watch-card">
-                <div class="card-type">⌚ Recommended Watch</div>
+                <div class="card-type">Recommended Watch</div>
                 <div class="item-name" id="watchModel">Watch Model</div>
                 <div class="card-details" id="watchDetails">Details</div>
             </div>
 
             <div class="card perfume-card">
-                <div class="card-type">🧪 Recommended Perfume</div>
+                <div class="card-type">Recommended Perfume</div>
                 <div class="item-name" id="perfumeName">Perfume Name</div>
                 <div class="notes-badge" id="perfumeNotes">Notes</div>
                 <div class="card-details" id="perfumeDetails">Details</div>
@@ -225,7 +217,6 @@
 let currentGender = 'Men';
 let currentStyle = '1';
 
-// --- CLEAN ACCESSIBLE WATCHES & PREMIUM FRAGRANCES ---
 const database = {
     "Men": {
         "1": {
@@ -353,7 +344,7 @@ function updateDisplay() {
     wrapper.classList.remove('show');
     
     setTimeout(() => {
-        document.getElementById("resultHeader").innerText = `✨ CURATED BLUEPRINT FOR ${currentGender.toUpperCase()} - ${match.Style.toUpperCase()} ✨`;
+        document.getElementById("resultHeader").innerText = `CURATED BLUEPRINT FOR ${currentGender.toUpperCase()} - ${match.Style.toUpperCase()}`;
         document.getElementById("watchModel").innerText = match.Watch;
         document.getElementById("watchDetails").innerText = match.Watch_Details;
         document.getElementById("perfumeName").innerText = match.Perfume;
@@ -361,10 +352,10 @@ function updateDisplay() {
         document.getElementById("perfumeDetails").innerText = match.Perfume_Details;
         
         wrapper.classList.add('show');
-    }, 120);
+    }, 50);
 }
 
-// Initialize application data on start
+// Start app
 updateDisplay();
 </script>
 
