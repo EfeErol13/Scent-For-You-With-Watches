@@ -3,221 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scent For You With Watches</title>
+    <title>Scent & Time Luxury Curator</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         body {
-            background-color: #FFFFFF;
-            color: #111111;
-            padding: 40px 20px;
+            background-color: #0B0F19;
+            color: #F3F4F6;
+            padding: 50px 20px;
             display: flex;
             justify-content: center;
+            min-height: 100vh;
         }
         .container {
-            max-width: 700px;
+            max-width: 800px;
             width: 100%;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
         }
         h1 {
-            text-align: center;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #FFF 0%, #9CA3AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
         }
         .subtitle {
-            text-align: center;
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-        hr {
-            border: 0;
-            border-top: 1px solid #E9ECEF;
-            margin: 20px 0;
+            color: #9CA3AF;
+            font-size: 15px;
+            font-weight: 400;
         }
         .section-title {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #6B7280;
             margin-bottom: 15px;
-            color: #333;
+            margin-top: 30px;
         }
-        .radio-group, .select-group {
+        /* Modern Button Architecture */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
             margin-bottom: 25px;
         }
-        .radio-options {
-            display: flex;
-            gap: 20px;
+        .style-grid {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         }
-        label {
+        .custom-btn {
+            background-color: #1F2937;
+            border: 1px solid #374151;
+            color: #9CA3AF;
+            padding: 16px 20px;
+            border-radius: 12px;
             font-size: 15px;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
         }
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #CCCCCC;
-            border-radius: 6px;
-            font-size: 15px;
-            background-color: #FFF;
-            outline: none;
-            cursor: pointer;
+        .custom-btn:hover {
+            background-color: #374151;
+            color: #FFF;
+            border-color: #4B5563;
+            transform: translateY(-2px);
         }
-        select:focus {
-            border-color: #111111;
+        .custom-btn.active {
+            background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+            border-color: #3B82F6;
+            color: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+        /* Premium Display Cards */
+        .result-wrapper {
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+        .result-wrapper.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .result-header {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 25px;
+            padding: 10px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border-left: 4px solid #3B82F6;
         }
         .result-container {
-            margin-top: 30px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 24px;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             .result-container {
                 grid-template-columns: 1fr;
             }
         }
         .card {
-            border-radius: 8px;
-            padding: 20px;
+            background: rgba(31, 41, 55, 0.6);
+            border: 1px solid #374151;
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
-        .watch-card {
-            background-color: #F8F9FA;
-            border: 1px solid #E9ECEF;
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
         }
-        .perfume-card {
-            background-color: #F4FBF7;
-            border: 1px solid #E1F5EB;
-        }
-        .card-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
+        .watch-card::before { background: #3B82F6; }
+        .perfume-card::before { background: #10B981; }
+
+        .card-type {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9CA3AF;
+            margin-bottom: 15px;
         }
         .item-name {
-            font-family: monospace;
-            font-size: 15px;
-            background-color: rgba(0,0,0,0.05);
-            padding: 4px 6px;
-            border-radius: 4px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 8px;
+        }
+        .notes-badge {
+            font-size: 12px;
+            color: #10B981;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 6px 10px;
+            border-radius: 6px;
             display: inline-block;
-            margin-bottom: 12px;
-            font-weight: bold;
+            margin-bottom: 15px;
+            font-weight: 500;
+            line-height: 1.4;
         }
         .card-details {
             font-size: 14px;
-            line-height: 1.5;
-            color: #333333;
-        }
-        .notes-badge {
-            font-size: 13px;
-            color: #1E7E34;
-            margin-bottom: 8px;
-            font-weight: 500;
+            line-height: 1.6;
+            color: #D1D5DB;
         }
         footer {
             text-align: center;
-            color: #888888;
+            color: #4B5563;
             font-size: 12px;
-            margin-top: 40px;
+            margin-top: 60px;
+            border-top: 1px solid #1F2937;
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>⌚ Scent For You With Watches 🧪</h1>
-    <p class="subtitle">Curate your perfect style identity effortlessly</p>
-    <hr>
+    <header>
+        <h1>Scent & Time Luxury Curator</h1>
+        <p class="subtitle">Curate your premium aesthetic blueprint seamlessly</p>
+    </header>
 
-    <div class="radio-group">
-        <div class="section-title">1. Select Your Gender:</div>
-        <div class="radio-options">
-            <label><input type="radio" name="gender" value="Men" checked onchange="updateMatch()"> Men</label>
-            <label><input type="radio" name="gender" value="Women" onchange="updateMatch()"> Women</label>
+    <div class="section-title">1. Select Perspective</div>
+    <div class="btn-grid">
+        <button class="custom-btn active" id="btn-Men" onclick="setGender('Men')">♂ Men</button>
+        <button class="custom-btn" id="btn-Women" onclick="setGender('Women')">♀ Women</button>
+    </div>
+
+    <div class="section-title">2. Choose Outfit Style Concept</div>
+    <div class="btn-grid style-grid">
+        <button class="custom-btn active" id="btn-1" onclick="setStyle('1')">👔 Old Money</button>
+        <button class="custom-btn" id="btn-2" onclick="setStyle('2')">👖 Casual Chic</button>
+        <button class="custom-btn" id="btn-3" onclick="setStyle('3')">💼 Classic Business</button>
+        <button class="custom-btn" id="btn-4" onclick="setStyle('4')">👟 Streetwear / Hype</button>
+        <button class="custom-btn" id="btn-5" onclick="setStyle('5')">🌙 Special Night</button>
+    </div>
+
+    <div class="result-wrapper" id="resultWrapper">
+        <div class="result-header" id="resultHeader">✨ Your Curated Match ✨</div>
+        
+        <div class="result-container">
+            <div class="card watch-card">
+                <div class="card-type">⌚ Recommended Watch</div>
+                <div class="item-name" id="watchModel">Watch Model</div>
+                <div class="card-details" id="watchDetails">Details</div>
+            </div>
+
+            <div class="card perfume-card">
+                <div class="card-type">🧪 Recommended Perfume</div>
+                <div class="item-name" id="perfumeName">Perfume Name</div>
+                <div class="notes-badge" id="perfumeNotes">Notes</div>
+                <div class="card-details" id="perfumeDetails">Details</div>
+            </div>
         </div>
     </div>
 
-    <div class="select-group">
-        <div class="section-title">2. Choose Your Outfit Style for Today:</div>
-        <select id="styleSelect" onchange="updateMatch()">
-            <option value="1">1. Old Money</option>
-            <option value="2">2. Casual</option>
-            <option value="3">3. Classic</option>
-            <option value="4">4. Sport</option>
-            <option value="5">5. Special Night</option>
-        </select>
-    </div>
-
-    <hr>
-
-    <h3 style="text-align: center; font-size: 16px; margin-top: 10px;" id="resultHeader">✨ Your Match ✨</h3>
-    
-    <div class="result-container">
-        <div class="card watch-card">
-            <div class="card-title">⌚ Recommended Watch</div>
-            <div class="item-name" id="watchModel">Loading...</div>
-            <div class="card-details" id="watchDetails">Loading...</div>
-        </div>
-
-        <div class="card perfume-card">
-            <div class="card-title">🧪 Recommended Perfume</div>
-            <div class="item-name" id="perfumeName">Loading...</div>
-            <div class="notes-badge" id="perfumeNotes">Loading...</div>
-            <div class="card-details" id="perfumeDetails">Loading...</div>
-        </div>
-    </div>
-
-    <footer>Scent For You With Watches © 2026</footer>
+    <footer>Scent & Time Curator © 2026</footer>
 </div>
 
 <script>
-// --- AUTHENTIC & ORIGINAL LUXURY DATABASE ---
+let currentGender = 'Men';
+let currentStyle = '1';
+
+// --- REMASTERED ACCESSIBLE WATCH & LUXURY PERFUME DATABASE ---
 const database = {
     "Men": {
         "1": {
             "Style": "Old Money",
-            "Watch": "Patek Philippe Calatrava",
-            "Watch_Details": "An iconic dress watch featuring a minimalist dial, ultra-thin profile, and a premium alligator leather strap. It represents timeless elegance without shouting.",
+            "Watch": "Seiko Presage 'Cocktail Time'",
+            "Watch_Details": "Features a stunning, deeply textured sunburst dial and an elegant automatic mechanical movement. It offers high-end heritage, exquisite finishing, and pure sophistication without the astronomical luxury price tag.",
             "Perfume": "Xerjoff - Naxos",
             "Perfume_Notes": "Top: Lavender, Bergamot, Lemon | Heart: Honey, Cinnamon, Cashmeran, Jasmine | Base: Tobacco Leaf, Tonka Bean, Vanilla.",
             "Perfume_Details": "A luxurious, authentic blend of sweet honey and rich tobacco. It perfectly complements a high-end, sophisticated lifestyle with its opulent yet smooth sillage."
         },
         "2": {
-            "Style": "Casual",
+            "Style": "Casual Chic",
             "Watch": "Tissot PRX Powermatic 80",
-            "Watch_Details": "Featuring an integrated steel bracelet and a waffle dial, this watch offers a perfect 1970s retro-modern aesthetic for daily wear.",
+            "Watch_Details": "A modern swiss-made masterpiece featuring an integrated steel bracelet design and a gorgeous waffle dial. Exceptional everyday style with an impressive 80-hour power reserve.",
             "Perfume": "Lattafa - Khamrah",
             "Perfume_Notes": "Top: Cinnamon, Nutmeg, Bergamot | Heart: Dates, Praline, Tuberose, Mahonial | Base: Vanilla, Tonka Bean, Myrrh, Benzoin, Amberwood.",
             "Perfume_Details": "An original, warm, sweet gourmand fragrance with a strong presence. Ideal for making a stylish statement during daily routines or casual gatherings."
         },
         "3": {
-            "Style": "Classic",
-            "Watch": "Rolex Datejust (Fluted Bezel / Jubilee Bracelet)",
-            "Watch_Details": "The ultimate symbol of classic horology. The fluted bezel catches the light perfectly, making it the supreme choice for sharp suits and formal events.",
-            "Perfume": "Tom Ford - Grey Vetiver (Eau de Parfum)",
+            "Style": "Classic Business",
+            "Watch": "Orient Bambino Version 4",
+            "Watch_Details": "The absolute golden standard for affordable dress watches. Features a classic domed crystal, sleek indices, and an in-house automatic movement that sits beautifully under any suit cuff.",
+            "Perfume": "Tom Ford - Grey Vetiver (EDP)",
             "Perfume_Notes": "Top: Grapefruit, Orange Blossom, Sage | Heart: Nutmeg, Orris Root, Pimento | Base: Vetiver, Woodsy Notes, Oakmoss, Amber.",
             "Perfume_Details": "A masterpiece of classic tailoring. This original fragrance features a clean, silver-toned, sophisticated vetiver note that pairs impeccably with sharp executive attire."
         },
         "4": {
-            "Style": "Sport",
-            "Watch": "Rolex Submariner Date",
-            "Watch_Details": "The most legendary dive watch in history. Its robust Oystersteel construction and black Cerachrom bezel deliver a powerful, masculine, and sporty look.",
+            "Style": "Streetwear / Hype",
+            "Watch": "Casio G-Shock 'CasiOak' (GA-2100)",
+            "Watch_Details": "An absolute design icon in contemporary streetwear. Features a stealthy, ultra-tough octagonal bezel structure that brings heavy urban credibility and indestructible utility.",
             "Perfume": "Sospiro - Erba Pura",
             "Perfume_Notes": "Top: Sicilian Orange, Calabrian Bergamot, Sicilian Lemon | Heart: Mediterranean Fruits | Base: White Musk, Amber, Madagascar Vanilla.",
             "Perfume_Details": "A modern, vibrant explosion of fresh Mediterranean fruits and heavy amber. High projection makes it ideal for dynamic streetwear and active outfits."
         },
         "5": {
             "Style": "Special Night",
-            "Watch": "Patek Philippe Grandmaster Chime",
-            "Watch_Details": "One of the most complex wristwatches ever created, boasting intricate acoustic complications. An absolute masterpiece reserved for the most exclusive evenings.",
+            "Watch": "Hamilton Ventura Quartz",
+            "Watch_Details": "The legendary shield-shaped watch worn by cultural icons. Its daring, futuristic mid-century design serves as an incredible conversation piece for exclusive dinner events.",
             "Perfume": "Xerjoff - Alexandria II",
             "Perfume_Notes": "Top: Palisander Rosewood, Lavender, Cinnamon, Apple | Heart: Rose, Cedar, Lily-of-the-Valley | Base: Agarwood (Oud), Sandalwood, Vanilla, Amber, Musk.",
             "Perfume_Details": "A majestic and complex oud-centered masterpiece. It projects extreme luxury, mystery, and unparalleled depth, making it unforgettable for a special night."
@@ -226,40 +276,40 @@ const database = {
     "Women": {
         "1": {
             "Style": "Old Money",
-            "Watch": "Cartier Tank Louis Cartier",
-            "Watch_Details": "A historic rectangular design with Roman numerals and blue steel hands. It is the definition of understatement, heritage, and refined taste.",
+            "Watch": "Seiko Presage Women's Automatic",
+            "Watch_Details": "Boasts a beautiful, diamond-dust textured dial with rose gold accents on a fine leather strap. Impeccable mechanical craft that projects classic, understated grace.",
             "Perfume": "Xerjoff - Casamorati Bouquet Ideale",
-            "Perfume_Notes": "Top: Cinnamon, Nutmeg | Heart: Guaiac Wood, Sandalwood, Cedar, Papyrus | Base: Vanilla, Coumarin, Amber, Musk, French Labdamum.",
+            "Perfume_Notes": "Top: Cinnamon, Nutmeg | Heart: Guaiac Wood, Sandalwood, Cedar, Papyrus | Base: Vanilla, Coumarin, Amber, Musk, French Labdanum.",
             "Perfume_Details": "An elegant, powdery, and woody-spicy fragrance. It wraps you like a high-quality cashmere scarf, embodying pure wealth and grace."
         },
         "2": {
-            "Style": "Casual",
+            "Style": "Casual Chic",
             "Watch": "Tissot PRX 35mm (Mint Green Dial)",
-            "Watch_Details": "A sleek, smaller profile integrated bracelet watch with a striking dial color. It adds a touch of sharp, effortless chic style to everyday outfits.",
+            "Watch_Details": "A magnificent swiss quartz watch with a striking mint dial and an integrated bracelet profile. Delivers effortless retro-chic elegance to any casual look.",
             "Perfume": "Lattafa - Yara",
             "Perfume_Notes": "Top: Orchid, Heliotrope, Tangerine | Heart: Gourmand Accord, Tropical Fruits | Base: Vanilla, Musk, Sandalwood.",
             "Perfume_Details": "A soft, creamy, and fluffy strawberry-vanilla scent. Highly addictive, feminine, and perfect for bright, casual day-to-day wear."
         },
         "3": {
-            "Style": "Classic",
-            "Watch": "Jaeger-LeCoultre Reverso Duetto",
-            "Watch_Details": "An art-deco masterpiece with a swiveling case. One side is clean and classic for the daytime, while the other features diamond accents for formal attire.",
+            "Style": "Classic Business",
+            "Watch": "Citizen Eco-Drive Silhouette",
+            "Watch_Details": "Powered continuously by any light source, never requiring a battery change. Features a clean, professional rectangular design that radiates intellect and reliability.",
             "Perfume": "Chanel - Coco Mademoiselle",
             "Perfume_Notes": "Top: Orange, Bergamot, Grapefruit | Heart: Rose, Jasmine, Litchi | Base: Patchouli, Bourbon Vanilla, White Musk, Vetiver.",
             "Perfume_Details": "A sharp, sophisticated patchouli and citrus composition. The benchmark of classic feminine elegance, perfect for formal and professional settings."
         },
         "4": {
-            "Style": "Sport",
-            "Watch": "Omega Seamaster Aqua Terra",
-            "Watch_Details": "A beautiful blend of maritime heritage and robust sportiness. Features a clean dial and excellent durability for an active, dynamic lifestyle.",
+            "Style": "Streetwear / Hype",
+            "Watch": "Casio Vintage Digital Rose Gold",
+            "Watch_Details": "The ultimate retro digital accessory. Its timeless metallic pink-gold finish blends authentic 80s nostalgia with modern urban hype culture seamlessly.",
             "Perfume": "Sospiro - Erba Gold",
             "Perfume_Notes": "Top: Calabrian Bergamot, Brazilian Orange, Sicilian Lemon, Ginger | Heart: Melon, Pear, Green Apple, Cinnamon, Cardamom | Base: Amber, Musk, Woody Notes.",
             "Perfume_Details": "A fresh, energetic, and loud luxury fragrance. The heavy fruit and ginger notes match perfectly with premium streetwear and luxury sportswear."
         },
         "5": {
             "Style": "Special Night",
-            "Watch": "Audemars Piguet Royal Oak (Rose Gold)",
-            "Watch_Details": "The iconic octagonal bezel combined with luxury materials. It is a bold statement piece that shimmers beautifully under evening lights.",
+            "Watch": "Bulova Rubaiyat Diamond",
+            "Watch_Details": "An artistic dress watch featuring an iconic crown placed at the 12 o'clock position and hand-set diamond accents. Shimmers beautifully under evening lighting.",
             "Perfume": "Maison Francis Kurkdjian - Baccarat Rouge 540 Extrait",
             "Perfume_Notes": "Top: Bitter Almond, Saffron | Heart: Egyptian Jasmine, Cedar | Base: Ambergris, Woody Notes, Musk.",
             "Perfume_Details": "An intoxicating, rich, and viral scent profile. Its unique blend of burnt sugar warmth and crystalline ambergris creates an elite aura for grand evening events."
@@ -267,25 +317,44 @@ const database = {
     }
 };
 
-function updateMatch() {
-    // Get selected gender
-    const gender = document.querySelector('input[name="gender"]:checked').value;
-    // Get selected style index
-    const styleVal = document.getElementById("styleSelect").value;
-    
-    const match = database[gender][styleVal];
-    
-    // Update HTML Content dynamically
-    document.getElementById("resultHeader").innerText = `✨ Your Match for ${gender} - ${match.Style} ✨`;
-    document.getElementById("watchModel").innerText = match.Watch;
-    document.getElementById("watchDetails").innerText = match.Watch_Details;
-    document.getElementById("perfumeName").innerText = match.Perfume;
-    document.getElementById("perfumeNotes").innerText = `Notes: ${match.Perfume_Notes}`;
-    document.getElementById("perfumeDetails").innerText = match.Perfume_Details;
+function setGender(gender) {
+    currentGender = gender;
+    document.getElementById('btn-Men').classList.remove('active');
+    document.getElementById('btn-Women').classList.remove('active');
+    document.getElementById(`btn-${gender}`).classList.add('active');
+    updateDisplay();
 }
 
-// Run once on load to initialize first view
-updateMatch();
+function setStyle(styleKey) {
+    currentStyle = styleKey;
+    for (let i = 1; i <= 5; i++) {
+        document.getElementById(`btn-${i}`).classList.remove('active');
+    }
+    document.getElementById(`btn-${styleKey}`).classList.add('active');
+    updateDisplay();
+}
+
+function updateDisplay() {
+    const match = database[currentGender][currentStyle];
+    const wrapper = document.getElementById('resultWrapper');
+    
+    // Smooth transition effect
+    wrapper.classList.remove('show');
+    
+    setTimeout(() => {
+        document.getElementById("resultHeader").innerText = `✨ CURATED BLUEPRINT FOR ${currentGender.toUpperCase()} - ${match.Style.toUpperCase()} ✨`;
+        document.getElementById("watchModel").innerText = match.Watch;
+        document.getElementById("watchDetails").innerText = match.Watch_Details;
+        document.getElementById("perfumeName").innerText = match.Perfume;
+        document.getElementById("perfumeNotes").innerText = `Olfactory Notes: ${match.Perfume_Notes}`;
+        document.getElementById("perfumeDetails").innerText = match.Perfume_Details;
+        
+        wrapper.classList.add('show');
+    }, 200);
+}
+
+// Initial setup
+updateDisplay();
 </script>
 
 </body>
